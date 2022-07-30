@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Backtester Alpha 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="#">Backtester Alpha 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Backtester Alpha 0.1 documentation</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="bt-view-documentation">
+<h1>Bt View documentation!<a class="headerlink" href="#bt-view-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+</div>
+<div class="section" id="module-bt_view.data.sources">
+<span id="data-sources"></span><h1>Data Sources<a class="headerlink" href="#module-bt_view.data.sources" title="Permalink to this headline">¶</a></h1>
+<p>Contains objects to connect with financial data sources</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bt_view.data.sources.Eod">
+<em class="property"><span class="pre">class</span><span class="w">  </span></em><span class="sig-prename descclassname"><span class="pre">bt_view.data.sources.</span></span><span class="sig-name descname"><span class="pre">Eod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'arnsoxD1joP6rGxV_Uxy'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bt_view.data.sources.Eod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pulls Daily OHLCV Data for US Equities from QuoteMedia.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="bt_view.data.sources.Eod.fields">
+<em class="property"><span class="pre">property</span><span class="w">  </span></em><span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bt_view.data.sources.Eod.fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list of fields e.g. OHLC, volume, splits, dividends.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bt_view.data.sources.Eod.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tickers</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w">  </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime.datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w">  </span><span class="o"><span class="pre">=</span></span><span class="w">  </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime.datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w">  </span><span class="o"><span class="pre">=</span></span><span class="w">  </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#bt_view.data.sources.Eod.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets data from QuoteMedia API. The resulting data may need to be transformed to be useful.
+See :func: Eod.to_price_series and :func: Eod.to_returns_series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tickers</strong> – Ticker(s) of stocks and ETFs e.g. SPY, QQQ</p></li>
+<li><p><strong>start</strong> – Starting date of the dataset.</p></li>
+<li><p><strong>end</strong> – Final date of the dataset.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Price data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bt_view.data.sources.Eod.meta_data">
+<em class="property"><span class="pre">property</span><span class="w">  </span></em><span class="sig-name descname"><span class="pre">meta_data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="pre">pandas.core.frame.DataFrame</span></em><a class="headerlink" href="#bt_view.data.sources.Eod.meta_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns info on all available tickers.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bt_view.data.sources.Field">
+<em class="property"><span class="pre">class</span><span class="w">  </span></em><span class="sig-prename descclassname"><span class="pre">bt_view.data.sources.</span></span><span class="sig-name descname"><span class="pre">Field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bt_view.data.sources.Field" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bt_view.data.sources.ReturnType">
+<em class="property"><span class="pre">class</span><span class="w">  </span></em><span class="sig-prename descclassname"><span class="pre">bt_view.data.sources.</span></span><span class="sig-name descname"><span class="pre">ReturnType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bt_view.data.sources.ReturnType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bt_view.data.sources.concat_fama_french_data">
+<span class="sig-prename descclassname"><span class="pre">bt_view.data.sources.</span></span><span class="sig-name descname"><span class="pre">concat_fama_french_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ff_data</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_series</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bt_view.data.sources.concat_fama_french_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to concatenate price data and Fama French data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ff_data</strong> – Data returned from :func: FamaFrench.get</p></li>
+<li><p><strong>time_series</strong> – table with a datetime index</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Concatenated data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bt_view.data.sources.quotemedia_metadata">
+<span class="sig-prename descclassname"><span class="pre">bt_view.data.sources.</span></span><span class="sig-name descname"><span class="pre">quotemedia_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#bt_view.data.sources.quotemedia_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pulls QUOTEMEDIA metadata e.g. table columns</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bt_view.data.sources.to_price_series">
+<span class="sig-prename descclassname"><span class="pre">bt_view.data.sources.</span></span><span class="sig-name descname"><span class="pre">to_price_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w">  </span><a class="reference internal" href="#bt_view.data.sources.Field" title="bt_view.data.sources.Field"><span class="pre">bt_view.data.sources.Field</span></a><span class="p"><span class="pre">]</span></span></span><span class="w">  </span><span class="o"><span class="pre">=</span></span><span class="w">  </span><span class="default_value"><span class="pre">'adj_close'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_index</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.core.indexes.datetimes.DatetimeIndex</span><span class="p"><span class="pre">]</span></span></span><span class="w">  </span><span class="o"><span class="pre">=</span></span><span class="w">  </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#bt_view.data.sources.to_price_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes the raw data output from the QuoteMedia API and transforms it
+to a time series format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Output from :func: Eod.get.</p></li>
+<li><p><strong>field</strong> – The price field to use. Default is adjusted close prices.
+See Eod.fields for a list of all fields.</p></li>
+<li><p><strong>ref_index</strong> – Index to align data with. Some data, such as economic data,
+is released on days where the market is closed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Price data in time series format.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bt_view.data.sources.to_returns_series">
+<span class="sig-prename descclassname"><span class="pre">bt_view.data.sources.</span></span><span class="sig-name descname"><span class="pre">to_returns_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w">  </span><a class="reference internal" href="#bt_view.data.sources.ReturnType" title="bt_view.data.sources.ReturnType"><span class="pre">bt_view.data.sources.ReturnType</span></a><span class="p"><span class="pre">]</span></span></span><span class="w">  </span><span class="o"><span class="pre">=</span></span><span class="w">  </span><span class="default_value"><span class="pre">'c2c'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nperiods</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">int</span></span><span class="w">  </span><span class="o"><span class="pre">=</span></span><span class="w">  </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lag</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">int</span></span><span class="w">  </span><span class="o"><span class="pre">=</span></span><span class="w">  </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#bt_view.data.sources.to_returns_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert prices to log returns. Adjusted prices are used to calculate returns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – prices returned from quandl api call</p></li>
+<li><p><strong>type</strong> (<em>return</em>) – how to compute returns.</p></li>
+<li><p><strong>nperiods</strong> – number of periods to compute returns over e.g. a value of 1 yields daily returns</p></li>
+<li><p><strong>lag</strong> – number of periods to lag returns e.g. a value of 1 attributes today’s returns to yesterday</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Time series of stock data returns.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="visualization-utilites">
+<h1>Visualization Utilites<a class="headerlink" href="#visualization-utilites" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-bt_view.visualization.utils"></span><p>Utility functions to aid in generating visuals</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bt_view.visualization.utils.Daily">
+<em class="property"><span class="pre">class</span><span class="w">  </span></em><span class="sig-prename descclassname"><span class="pre">bt_view.visualization.utils.</span></span><span class="sig-name descname"><span class="pre">Daily</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bt_view.visualization.utils.Daily" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bt_view.visualization.utils.Drawdown">
+<em class="property"><span class="pre">class</span><span class="w">  </span></em><span class="sig-prename descclassname"><span class="pre">bt_view.visualization.utils.</span></span><span class="sig-name descname"><span class="pre">Drawdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bt_view.visualization.utils.Drawdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bt_view.visualization.utils.FfnMetric">
+<em class="property"><span class="pre">class</span><span class="w">  </span></em><span class="sig-prename descclassname"><span class="pre">bt_view.visualization.utils.</span></span><span class="sig-name descname"><span class="pre">FfnMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bt_view.visualization.utils.FfnMetric" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bt_view.visualization.utils.Monthly">
+<em class="property"><span class="pre">class</span><span class="w">  </span></em><span class="sig-prename descclassname"><span class="pre">bt_view.visualization.utils.</span></span><span class="sig-name descname"><span class="pre">Monthly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bt_view.visualization.utils.Monthly" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bt_view.visualization.utils.Returns">
+<em class="property"><span class="pre">class</span><span class="w">  </span></em><span class="sig-prename descclassname"><span class="pre">bt_view.visualization.utils.</span></span><span class="sig-name descname"><span class="pre">Returns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bt_view.visualization.utils.Returns" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bt_view.visualization.utils.Sharpe">
+<em class="property"><span class="pre">class</span><span class="w">  </span></em><span class="sig-prename descclassname"><span class="pre">bt_view.visualization.utils.</span></span><span class="sig-name descname"><span class="pre">Sharpe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bt_view.visualization.utils.Sharpe" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bt_view.visualization.utils.Sortino">
+<em class="property"><span class="pre">class</span><span class="w">  </span></em><span class="sig-prename descclassname"><span class="pre">bt_view.visualization.utils.</span></span><span class="sig-name descname"><span class="pre">Sortino</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bt_view.visualization.utils.Sortino" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bt_view.visualization.utils.Yearly">
+<em class="property"><span class="pre">class</span><span class="w">  </span></em><span class="sig-prename descclassname"><span class="pre">bt_view.visualization.utils.</span></span><span class="sig-name descname"><span class="pre">Yearly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bt_view.visualization.utils.Yearly" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bt_view.visualization.utils.bkformat">
+<span class="sig-prename descclassname"><span class="pre">bt_view.visualization.utils.</span></span><span class="sig-name descname"><span class="pre">bkformat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figure</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">bokeh.plotting.figure.Figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w">  </span><span class="o"><span class="pre">=</span></span><span class="w">  </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w">  </span><span class="o"><span class="pre">=</span></span><span class="w">  </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w">  </span><span class="o"><span class="pre">=</span></span><span class="w">  </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bt_view.visualization.utils.bkformat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to perform basic formatting on bokeh figures.
+Specifically, this adds a title, axis labels, and an interactive
+legend.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>figure</strong> – The figure to format.</p></li>
+<li><p><strong>xlabel</strong> – Label for x-axis.</p></li>
+<li><p><strong>ylabel</strong> – Label for y-axis.</p></li>
+<li><p><strong>title</strong> – Figure title</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Formatted figure.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bt_view.visualization.utils.default_figure">
+<span class="sig-prename descclassname"><span class="pre">bt_view.visualization.utils.</span></span><span class="sig-name descname"><span class="pre">default_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ttips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bokeh.plotting.figure.Figure</span></span></span><a class="headerlink" href="#bt_view.visualization.utils.default_figure" title="Permalink to this definition">¶</a></dt>
+<dd><p>The default bokeh figure used to make visuals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>datetime_x</strong> – Set as true if x-axis contains datetime values.</p></li>
+<li><p><strong>ttips</strong> – Tooltips to include at the figure level. See
+<a class="reference external" href="https://docs.bokeh.org/en/latest/docs/user_guide/tools.html#basic-tooltips">https://docs.bokeh.org/en/latest/docs/user_guide/tools.html#basic-tooltips</a>
+for furher information.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A bokeh figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bt_view.visualization.utils.ffn_stats">
+<span class="sig-prename descclassname"><span class="pre">bt_view.visualization.utils.</span></span><span class="sig-name descname"><span class="pre">ffn_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stats</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bt_view.visualization.utils.FfnMetric" title="bt_view.visualization.utils.FfnMetric"><span class="pre">bt_view.visualization.utils.FfnMetric</span></a><span class="p"><span class="pre">,</span></span><span class="w">  </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bokeh.models.widgets.tables.DataTable</span></span></span><a class="headerlink" href="#bt_view.visualization.utils.ffn_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate time series financial metrics in a Bokeh object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>res</strong> – Backtest results.</p></li>
+<li><p><strong>metrics</strong> – Specify metrics to display. If this is None,
+all metrics will be displayed.</p></li>
+<li><p><strong>Returns</strong> – A table of financial time series metrics.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bt_view.visualization.utils.time_series">
+<span class="sig-prename descclassname"><span class="pre">bt_view.visualization.utils.</span></span><span class="sig-name descname"><span class="pre">time_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dframe</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w">  </span><span class="o"><span class="pre">=</span></span><span class="w">  </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w">  </span><span class="o"><span class="pre">=</span></span><span class="w">  </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w">  </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w">  </span><span class="o"><span class="pre">=</span></span><span class="w">  </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bokeh.plotting.figure.Figure</span></span></span><a class="headerlink" href="#bt_view.visualization.utils.time_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate an interactive time series plot from a DataFrame. Requires that
+the index be a pandas DateTimeIndex.</p>
+<p>The generated plot can be viewed in an HTML document using :func: bokeh.plotting.show
+or in a Streamlit app using :func: streamlit.bokeh_chart. For the latter, see
+<a class="reference external" href="https://docs.streamlit.io/library/api-reference/charts/st.bokeh_chart">https://docs.streamlit.io/library/api-reference/charts/st.bokeh_chart</a> for more info.</p>
+<p>NOTE: Streamlit requires bokeh version 2.4.1 to view charts in app.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dframe</strong> – Data to be plotted.</p></li>
+<li><p><strong>color</strong> – Color palette to use. See <a class="reference external" href="https://docs.bokeh.org/en/latest/docs/reference/palettes.html">https://docs.bokeh.org/en/latest/docs/reference/palettes.html</a></p></li>
+<li><p><strong>information.</strong> (<em>for more</em>) – </p></li>
+<li><p><strong>xlabel</strong> – The plot’s x-axis label.</p></li>
+<li><p><strong>ylabel</strong> – The plot’s y-axis label.</p></li>
+<li><p><strong>title</strong> – The plot’s title.</p></li>
+<li><p><strong>prefix</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A figure viewable in HTML or a Streamlit app.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="#">Backtester Alpha 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Backtester Alpha 0.1 documentation</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>
