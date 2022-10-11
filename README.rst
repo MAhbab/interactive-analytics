@@ -49,15 +49,15 @@ Below are just a few of the features included in btplus!
     * **Dynamic Candlestick Chart**
         View price data in Jupter Notebook cleanly and interactively.
 
-        .. image:: https://imgur.com/mpXO0Ew
+        .. image:: https://imgur.com/mpXO0Ew.gif
 
     * **Regression Results**
 
-        .. image:: https://imgur.com/NQqZtVL
+        .. image:: https://imgur.com/NQqZtVL.gif
 
     * **Backtest Results HiPlot** (Using `HiPlot <https://github.com/facebookresearch/hiplot>`_)
 
-        .. image:: https://imgur.com/dQOYC4W
+        .. image:: https://imgur.com/dQOYC4W.png
 
 
 Since btplus has many dependencies, it's strongly recommended to install the `Anaconda Scientific Python
