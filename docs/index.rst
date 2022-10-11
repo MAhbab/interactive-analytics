@@ -1,23 +1,21 @@
-.. Backtester Alpha documentation master file, created by
+.. btplus documentation master file, created by
    sphinx-quickstart.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Bt View documentation!
+btplus documentation!
 ==============================================
-
-Contents:
 
 Data Sources
 ==================
-.. automodule:: bt_view.data.sources
+.. automodule:: btplus.data
    :members:
+   :show-inheritance:
+   :inherited-members:
 
-
-Visualization Utilites
+Visual Tools
 ==================
-.. automodule:: bt_view.visualization.utils
+.. automodule:: btplus.visual
    :members:
-
-
+   
 
