@@ -28,8 +28,8 @@ import bokeh
 import statsmodels.api as sm
 import hiplot as hip
 
-from bokeh.plotting import figure, Figure, show
-from bokeh.models import HoverTool, ColumnDataSource, DataTable, TableColumn, CDSView, GroupFilter, Panel, Tabs
+from bokeh.plotting import figure, show
+from bokeh.models import HoverTool, ColumnDataSource, DataTable, TableColumn, CDSView, GroupFilter, TabPanel, Tabs
 from bokeh.models.widgets import DateRangeSlider, DataTable, TableColumn, Div
 from bokeh.layouts import column
 from itertools import cycle
@@ -44,7 +44,7 @@ TOOLBAR_LOC = 'below'
 SIZING_MODE = 'stretch_both'
 
 
-def default_figure(datetime_x=False, ttips=None, **kwds) -> Figure:
+def default_figure(datetime_x=False, ttips=None, **kwds):
     default_kwargs = {
         'height': HEIGHT,
         'width': WIDTH,
@@ -63,7 +63,7 @@ def default_figure(datetime_x=False, ttips=None, **kwds) -> Figure:
     
     return fig
 
-def bkformat(figure: Figure, xlabel: str = None, ylabel: str= None, title: str = None):
+def bkformat(figure, xlabel: str = None, ylabel: str= None, title: str = None):
     figure.legend.location = 'top_left'
     figure.legend.click_policy = 'hide'
 
@@ -318,14 +318,14 @@ def regression_panel(res, display=True, exog_oos=None, endog_oos=None):
 
         plots['Prediction'] = time_series(oos, xlabel='Date', ylabel='Value', title='Out-of-Sample Test')
 
-    figure = Tabs(tabs=[Panel(title=key, child=plots[key]) for key in plots])
+    figure = Tabs(tabs=[TabPanel(title=key, child=plots[key]) for key in plots])
         
 
     tables = res.summary().tables
     labels = ['Model', 'Parameters', 'Residuals']
     table_tabs = []
     for t, l in zip(tables, labels):
-        table_tabs.append(Panel(title=l, child=Div(text=t.as_html(), width=500, height=150)))
+        table_tabs.append(TabPanel(title=l, child=Div(text=t.as_html(), width=500, height=150)))
 
     tabulated_table = Tabs(tabs=table_tabs)
 
@@ -518,7 +518,7 @@ def rolling_regression_panel(res, display=True, **fig_kwargs):
     tabs = []
     for k in data:
         tabs.append(
-            Panel(title=k, child=time_series(data[k], xlabel='Date', title='{}'.format(k), **fig_kwargs))
+            TabPanel(title=k, child=time_series(data[k], xlabel='Date', title='{}'.format(k), **fig_kwargs))
         )
 
     out = Tabs(tabs=tabs)
